@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Cloud Test</string>
+    <string name="press_me_button">Press Me</string>
+    <string name="new_text">"Clicked!</string>
+</resources>
