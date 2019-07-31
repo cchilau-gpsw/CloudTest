@@ -12,14 +12,29 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
 
+import org.junit.Rule;
+import org.junit.After;
+import com.microsoft.appcenter.espresso.Factory;
+import com.microsoft.appcenter.espresso.ReportHelper;
+import android.R.attr.label
+
+
+
 
 /**
  * Instrumented test, which will execute on an Android device.
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  */
+@Rule
+var reportHelper = Factory.getReportHelper()
 @RunWith(AndroidJUnit4ClassRunner::class)
 class ExampleInstrumentedTest {
+    @After
+    fun tearDown() {
+        reportHelper.label("Stopping App")
+    }
+
     @Test
     fun useAppContext() {
         // Context of the app under test.
