@@ -8,17 +8,13 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import androidx.test.platform.app.InstrumentationRegistry
+import com.microsoft.appcenter.espresso.Factory
+import com.microsoft.appcenter.espresso.ReportHelper
+import org.junit.After
 import org.junit.Assert.assertEquals
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-
-import org.junit.Rule;
-import org.junit.After;
-import com.microsoft.appcenter.espresso.Factory;
-import com.microsoft.appcenter.espresso.ReportHelper;
-import android.R.attr.label
-
-
 
 
 /**
@@ -29,15 +25,13 @@ import android.R.attr.label
 
 @RunWith(AndroidJUnit4ClassRunner::class)
 class ExampleInstrumentedTest {
-    @Rule
-    var reportHelper: ReportHelper = Factory.getReportHelper()
+    @get:Rule var reportHelper: ReportHelper = Factory.getReportHelper()
     @After
     fun tearDown() {
         reportHelper.label("Stopping App")
     }
 
     @Test
-    @Rule
     fun useAppContext() {
         // Context of the app under test.
         reportHelper.label("Checking the app context")
