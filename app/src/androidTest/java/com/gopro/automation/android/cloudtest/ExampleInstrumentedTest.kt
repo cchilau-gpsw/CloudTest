@@ -26,24 +26,28 @@ import android.R.attr.label
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  */
-@Rule
-var reportHelper = Factory.getReportHelper()
+
 @RunWith(AndroidJUnit4ClassRunner::class)
 class ExampleInstrumentedTest {
+    @Rule
+    var reportHelper: ReportHelper = Factory.getReportHelper()
     @After
     fun tearDown() {
         reportHelper.label("Stopping App")
     }
 
     @Test
+    @Rule
     fun useAppContext() {
         // Context of the app under test.
+        reportHelper.label("Checking the app context")
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
         assertEquals("com.gopro.automation.android.cloudtest", appContext.packageName)
     }
 
     @Test
     fun clickButtonTest() {
+        reportHelper.label("Checking button")
         ActivityScenario.launch(MainActivity::class.java)
         onView(withId(R.id.button)).perform(click())
         onView(withId(R.id.textView)).check(ViewAssertions.matches(withText(R.string.new_text)))
